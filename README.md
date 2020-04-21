@@ -21,7 +21,7 @@ must please bear in mind the following:
 
  * The database folder must exist BEFORE use. There is no support for defining 
  new tables or for building a database schema from scratch - that's what Excel
- if for
+ is for (jk lol)
  
  * Ensure you pass the path to the database files into the class initilisation
 
