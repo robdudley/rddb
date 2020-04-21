@@ -1,6 +1,6 @@
 # A quick and dirty toy database
 
-Written in Python 3.7 this database uses a CSV based backend and allow simple
+Written in Python 3.7 this database uses a CSV based backend and allows simple
 CRUD (INSERT, SELECT, UPDATE, DELETE) operations.
 
 Data is held in memory and persisted back to the CSV file on INSERT, UPDATE or 
