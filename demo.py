@@ -1,30 +1,34 @@
 from pprint import pprint 
 from rddb import CsvDb
 
-def main():
-    # Instantiate our Database
-    db = CsvDb('testdb')
 
-    pprint(vars(db))
-
-    # Search for a person called Dave
-    person = db.select('people', 'firstname', 'dave')
-    print(person)
+# Instantiate our Database with the path to the data / CSV files
+db = CsvDb('testdb')
 
 
-    new_person = db.insert('people', ['Annie', 'Anderson', 33, 52])
-    print(new_person)
+# Print the database before 
+pprint(vars(db))
 
 
-    updated_person = db.update('people', 'firstname', 'dave', ['David', 'Davis', 24, 56])
-    print(updated_person)
-
-    deleted_person = db.delete('people', 'firstname', 'Anton')
-    print(deleted_person)
-
-    pprint(vars(db))
+# Search for a person called Dave
+person = db.select('people', 'firstname', 'Dave')
+pprint(person)
 
 
+# Add a person to the table
+new_person = db.insert('people', ['Annie', 'Anderson', 33, 52])
+pprint(new_person)
 
-if __name__ == "__main__":
-    main()
+
+# Update a person who's last name is Smith 
+updated_person = db.update('people', 'lastname', 'Smith', ['Sally', 'Smith', 30, 64])
+pprint(updated_person)
+
+
+# Delete a person who is  Anton
+deleted_person = db.delete('people', 'age', 56)
+pprint(deleted_person)
+
+
+# print the database after
+pprint(vars(db))

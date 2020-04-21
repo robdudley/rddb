@@ -132,7 +132,40 @@ class CsvDb:
 
 ################################################################################
 #
-# Searchs a table for a row where a column matches a value
+# Loads ALL data from a table
+#
+################################################################################
+
+    def all(self, table_name):
+
+        """
+        
+        Loads all rows from a given table <table_name>
+
+        Returns: List of Lists
+
+        Keyword arguments:
+
+        table_name -- the file path to load the DB data from
+
+        """
+        
+        key_index = self.getKeyIndex(table_name, key)
+
+        target_table = self.tables[table_name]
+
+        for row in target_table['data']:
+
+            if  row[key_index] == value:
+
+                return row
+            
+        return []
+
+
+################################################################################
+#
+# SELECTs data from a table where a column matches a value
 #
 ################################################################################
 
@@ -146,7 +179,9 @@ class CsvDb:
 
         Keyword arguments:
 
-        db_path -- the file path to load the DB data from
+        table_name -- the table to update
+        key -- the key or column name to search over
+        value -- the value to search for
 
         """
         
@@ -156,7 +191,7 @@ class CsvDb:
 
         for row in target_table['data']:
 
-            if  row[key_index].lower() == value.lower():
+            if  row[key_index] == value:
 
                 return row
             
@@ -165,7 +200,7 @@ class CsvDb:
 
 ################################################################################
 #
-# Adds a new row to the specified table
+# INSERTs a new row to the specified table
 #
 ################################################################################
 
@@ -193,7 +228,7 @@ class CsvDb:
 
 ################################################################################
 #
-# Updates an item in the specified table
+# UPDATEs an item in the specified table
 #
 ################################################################################
 
@@ -222,7 +257,7 @@ class CsvDb:
 
         for row in target_table['data']:
 
-            if  row[key_index].lower() == value.lower():
+            if  row[key_index] == value:
 
                 self.tables[table_name]['data'][row_index] = data
 
@@ -237,7 +272,7 @@ class CsvDb:
 
 ################################################################################
 #
-# Deletes an item from the table <table_name> where <key> matches <value>
+# DELETEs an item from the table <table_name> where <key> matches <value>
 #
 ################################################################################
 
@@ -263,7 +298,7 @@ class CsvDb:
         # <key> matches <value>
         for row in self.tables[table_name]['data']:
 
-            if  row[key_index].lower() == value.lower():
+            if  row[key_index] == value:
                 
                 # found one!
                 # Remove the row
